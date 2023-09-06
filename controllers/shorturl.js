@@ -15,9 +15,9 @@ const saveURL = asyncHandler(async (req, res) => {
     res.json({ error: "invalid url" });
   }
 
-  const countQuery = await URL.countDocuments({});
+  let countQuery = await URL.countDocuments({});
 
-  if (!countQuery) {
+  if (!countQuery || countQuery === 0) {
     countQuery = 1;
   }
 
